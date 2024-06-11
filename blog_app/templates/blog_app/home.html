@@ -1,0 +1,16 @@
+{% extends "blog_app/base.html" %}
+
+{% block title %}
+    home
+{% endblock%}
+
+{% block content %}
+    {% for blog in blogs%}
+    <h1>{{blog.Title}}<h2>
+    <h2>{{blog.Author}}<h2>
+    <h3>{{blog.category}}</h3>
+    <h4>{{blog.content}}<h4>
+    <hr>
+    {% endfor %}
+    <p>Great work</p>    
+{% endblock%}

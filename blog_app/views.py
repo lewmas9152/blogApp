@@ -1,23 +1,21 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django .contrib.auth.models import User
+from .models import Post
 
 
-blogs = [{
-    'Title':"My first blog",
-    'Author': "IconSam",
-    'category':"Technology",
-    'content':"I am very happy to be writing my first blog app",
-
-},
-{
-    'Title':"My Second blog",
-    'Author': "Iconicsam",
-    'category':"Tech",
-    'content':"I am very happy to be writing my first django blogApp",
-
-}]
 def home(request):
+    posts = Post.objects.all()
     context = {
-        "blogs": blogs
+        "posts": posts
     }
     return render(request,'blog_app/home.html',context)
+
+def create(request):
+    pass
+
+def edit(request):
+    pass
+
+def delete(request):
+    pass

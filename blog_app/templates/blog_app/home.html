@@ -5,12 +5,27 @@
 {% endblock%}
 
 {% block content %}
-    {% for blog in blogs%}
-    <h1>{{blog.Title}}<h2>
-    <h2>{{blog.Author}}<h2>
-    <h3>{{blog.category}}</h3>
-    <h4>{{blog.content}}<h4>
-    <hr>
-    {% endfor %}
-    <p>Great work</p>    
+<main class="container">
+    <section class="blog-posts">
+        <article class="post">
+            <h2>Blog Post Title</h2>
+            <p class="post-meta">Posted on June 11, 2024 by <a href="#">Author</a></p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque fringilla efficitur eros, at posuere quam condimentum id.</p>
+            <a href="#" class="read-more">Read More</a>
+        </article>
+
+        <article class="post">
+            <h2>Another Blog Post</h2>
+            <p class="post-meta">Posted on June 10, 2024 by <a href="#">Author</a></p>
+            <p>Suspendisse potenti. Sed in justo sit amet nisi egestas tristique. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.</p>
+            <a href="#" class="read-more">Read More</a>
+        </article>
+
+        <!-- More blog posts -->
+    </section>
+    
+   {% block aside %}
+   
+   {% endblock%}
+</main>  
 {% endblock%}

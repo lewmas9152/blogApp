@@ -1,0 +1,13 @@
+{% extends 'blog_app/base.html'%}
+{% load static %}
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'blogApp/profile.css' %}">
+{% endblock %}
+{% block content %}
+    <h1>{{ user.username }}'s Profile</h1>
+    {% if user.userprofile.avatar %}
+        <img src="{{ user.userprofile.avatar.url }}" alt="{{ user.username }}">
+    {% endif %}
+    <p><strong>Bio:</strong> {{ user.userprofile.bio }}</p>
+    <p><strong>Birth date:</strong> {{ user.userprofile.birth_date }}</p>
+{% endblock %}

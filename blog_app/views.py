@@ -29,6 +29,9 @@ def register_view(request):
         form = CustomUserCreationForm()
     return render(request, 'blog_app/register.html', {'form': form})
 
+def profile_view(request, username):
+    user = get_object_or_404(User, username=username)
+    return render(request, 'blog_app/profile.html', {'user':user})
 
 def home(request):
     posts = Post.objects.all()

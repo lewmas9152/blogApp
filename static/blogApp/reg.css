@@ -1,0 +1,83 @@
+/* styles.css */
+
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333333;
+    text-align: center;
+}
+
+form p {
+    margin-bottom: 15px;
+}
+
+form p label {
+    display: block;
+    margin-bottom: 5px;
+    color: #666666;
+}
+
+form p input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    padding: 12px 15px;
+    border: none;
+    background: #007BFF;
+    color: white;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+p a {
+    color: #007BFF;
+    text-decoration: none;
+    display: block;
+    margin-top: 15px;
+    text-align: center;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+.errorlist {
+    color: #ff0000;
+    margin-bottom: 15px;
+}
+
+.errorlist li {
+    list-style: none;
+}

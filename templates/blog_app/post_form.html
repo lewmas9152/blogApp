@@ -1,0 +1,32 @@
+{% extends "blog_app/base.html" %}
+{% load static %}
+{% block extrastyles %}
+<link rel="stylesheet" href="{% static 'blogApp/forms.css' %}">
+<style>
+  .sidebar {
+    display:none;
+  }
+</style>
+{% endblock %}
+{% block content %}
+<div class="form-container" >
+  <div class="form-header">
+    <h2>{% if form.instance.pk %}Edit{% else %}Create{% endif %} Post</h2>
+  </div>
+  <form method="post">
+    {% csrf_token %}
+    <div class="form-field">
+      {{ form.title.label_tag }}
+      {{ form.title }}
+    </div>
+    <div class="form-field">
+      {{ form.content.label_tag }}
+      {{ form.content }}
+    </div>
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">Save</button>
+      <a href="{% url 'home' %}" class="btn btn-secondary">Cancel</a>
+    </div>
+  </form>
+</div>
+{% endblock %}

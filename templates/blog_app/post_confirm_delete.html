@@ -1,0 +1,27 @@
+{% extends "blog_app/base.html" %}
+{% load static %}
+{% block extrastyles %}
+<link rel="stylesheet" href="{% static 'blogApp/forms.css' %}">
+<style>
+  aside {
+    display:none;
+  }
+</style>
+{% endblock %}
+{% block content %}
+<div class="form-container">
+  <div class="form-header">
+    <h2>Confirm Delete</h2>
+  </div>
+  <div class="delete-confirmation">
+    <p>Are you sure you want to delete "{{ post.title }}"?</p>
+  </div>
+  <form method="post">
+    {% csrf_token %}
+    <div class="form-actions">
+      <button type="submit" class="btn btn-danger">Delete</button>
+      <a href="{% url 'post_detail' post.id %}" class="btn btn-secondary">Cancel</a>
+    </div>
+  </form>
+</div>
+{% endblock %}

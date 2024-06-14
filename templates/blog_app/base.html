@@ -5,10 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Blog</title>
-
     <link rel="stylesheet" href="{% static "blogApp/main.css" %}" />
-    {% block extra_styles %}
-
+    {% block extrastyles%}
     {% endblock %}
   </head>
   <body>
@@ -27,13 +25,28 @@
       </div>
     </header>
 
-    {% block content %} 
+    <main class= 'container'>
+        {% block content %} 
 
+        {% endblock %}
+    <aside class="sidebar">
+        <h3>Categories</h3>
+        <ul>
+          <li><a href="#">Category 1</a></li>
+          <li><a href="#">Category 2</a></li>
+          <li><a href="#">Category 3</a></li>
+        </ul>
 
-    
-    {% endblock %}
+        <h3>Recent Posts</h3>
+        <ul>
+          <li><a href="#">Recent Post 1</a></li>
+          <li><a href="#">Recent Post 2</a></li>
+          <li><a href="#">Recent Post 3</a></li>
+        </ul>
+    </aside>
+  </main>
 
-    <footer>
+  <footer>
       <div class="container">
         <p>&copy; 2024 My Blog. All Rights Reserved.</p>
       </div>

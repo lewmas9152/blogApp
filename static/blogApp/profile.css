@@ -1,17 +1,14 @@
-/* profile.css */
-
-/* Container styles */
-.container {
+.card {
+    width: 500px;
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #f9f9f9;
+    background-color: whitesmoke;
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-/* Profile header styles */
 .profile-header {
     text-align: center;
     margin-bottom: 20px;
@@ -32,7 +29,6 @@
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-/* Profile details styles */
 .profile-details {
     margin-bottom: 20px;
 }
@@ -48,10 +44,18 @@
     color: #333;
 }
 
-/* Responsive adjustments */
+.profile-details h1 {
+    text-align: center;
+    
+}
+
+aside {
+    display: none;
+}
+
 @media (max-width: 768px) {
     .profile-header img {
         width: 120px;
         height: 120px;
     }
-}
+} 

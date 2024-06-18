@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404,redirect
 from django.contrib.auth.forms import AuthenticationForm
-from .forms import CustomUserCreationForm, PostForm
+from .forms import CustomUserCreationForm, PostForm, UserForm, UserProfileForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout
 from django.http import HttpResponseForbidden
@@ -30,10 +30,34 @@ def register_view(request):
         form = CustomUserCreationForm()
     return render(request, 'blog_app/register.html', {'form': form})
 
+@login_required
 def profile_view(request, username):
     user = get_object_or_404(User, username=username)
     return render(request, 'blog_app/profile.html', {'user':user})
 
+
+@login_required
+def update_profile(request,username):
+    if request.method == 'POST':
+        user_form = UserForm(request.POST, instance=request.user)
+        profile_form = UserProfileForm(request.POST, request.FILES, instance=request.user.userprofile)
+        user = get_object_or_404(User, username=username)
+
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            return redirect('profile', username = request.user.username)
+        
+    else:
+        user_form = UserForm(instance=request.user)
+        profile_form = UserProfileForm(instance=request.user.userprofile)
+        user = get_object_or_404(User, username=username)
+    
+    return render(request, 'blog_app/update_profile.html', {
+        'user_form': user_form,
+        'profile_form':profile_form,
+        'user':user
+    })
 @login_required
 def home(request):
     posts = Post.objects.all()

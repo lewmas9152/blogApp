@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Jost", sans-serif;
+  font-weight: 500;
   line-height: 1.6;
   margin: 0;
   padding: 0;
@@ -9,6 +11,22 @@ body {
   width: 80%;
   margin: auto;
   overflow: hidden;
+}
+
+.content_home{
+  max-height: 3rem;
+  overflow: hidden;
+}
+
+.nav_url {
+  display:flex;
+  align-items: center;
+}
+
+.profile {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
 }
 
 header {
@@ -34,6 +52,20 @@ header ul {
 header li {
   display: inline;
   padding: 0 20px 0 20px;
+ 
+  
+}
+
+.link {
+  color: blue;
+ 
+}
+
+li a:hover{
+  background-color: #575353 ;
+  padding:0.5rem;
+  border-radius: 1rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 header h1 {
@@ -56,6 +88,11 @@ main {
   margin-right: 20px;
 }
 
+.post-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 .post {
   margin-bottom: 40px;
 }
@@ -82,20 +119,6 @@ main {
   max-width: 100%;
   height: auto;
   margin: 20px 0;
-}
-
-.read-more {
-  display: inline-block;
-  margin-top: 10px;
-  background: #77aacc;
-  color: #fff;
-  padding: 10px 15px;
-  text-decoration: none;
-  border-radius: 5px;
-}
-
-.read-more:hover {
-  background: #555;
 }
 
 .sidebar {
@@ -125,6 +148,21 @@ main {
 
 .sidebar a:hover {
   text-decoration: underline;
+}
+
+.update-btn{
+  background-color: blue;
+  border: none;
+  border-radius: 1rem;
+  padding: 1rem;
+  text-transform: uppercase;
+  color: white;
+  cursor: pointer;
+  letter-spacing: 2px;
+}
+
+.update-btn:hover {
+  background-color: rgb(18, 18, 170);
 }
 
 footer {

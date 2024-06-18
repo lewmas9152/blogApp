@@ -12,13 +12,15 @@
   <body>
     <header>
       <div class="container">
-        <h1>My Blog</h1>
+        <h1>BlogSter</h1>
         <nav>
-          <ul>
-            <li><a href="{% url 'home' %}">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="{% url 'profile' user.username %}">Profile</a></li>
+        
+          <ul class = "nav_url">
+            <li><a href="{% url 'post_create' %}" class="link">Create New Post</a></li>
+            <li><a href="{% url 'home' %}" class="link">Home</a></li>
+            <li><a href="#" class="link">About</a></li>
+            <li><a href="#" class="link">Contact</a></li>
+            <li ><a href="{% url 'profile' user.username %}" class="link"><img src ="{{user.userprofile.avatar.url }}" alt="Profile"class ="profile"/></a></li>
 
           </ul>
         </nav>

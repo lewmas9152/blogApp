@@ -8,25 +8,27 @@
 {% endblock%}
 {% block content %}
 <section class="blog-posts">
-  <div class="create-post">
-    <a href="{% url 'post_create' %}" class="btn btn-primary">Create New Post</a>
-  </div>
-  
+ 
   {% if posts %}
     {% for post in posts %}
     <article class="post">
-      <h2>{{ post.title }}</h2>
+      <h2>{{ post.title|title }}</h2>
       <p class="post-meta">{{ post.date_posted }} by <a href="#">{{ post.author }}</a></p>
-      <p>{{ post.content }}</p>
-      <a href="{% url 'post_detail' post.id %}" class="read-more">Read More</a>
+      <p class ="content_home">{{ post.content }}</p>
+     
 
 
-      {% if request.user == post.author %}
+      
       <div class="post-actions">
+        <a href="{% url 'post_detail' post.id %}" class=" btn btn-primary read-more">Read More</a>
+        {% if request.user == post.author %}
+        <div>
         <a href="{% url 'post_edit' post.id %}" class="btn btn-secondary">Edit</a>
         <a href="{% url 'post_delete' post.id %}" class="btn btn-danger">Delete</a>
+        </div>
+        {% endif %}
       </div>
-      {% endif %}
+     
     </article>
     {% endfor %}
   {% else %}

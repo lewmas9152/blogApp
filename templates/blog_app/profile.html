@@ -7,14 +7,18 @@
 <div class="card">
     <div class="profile-header">
         {% if user.userprofile.avatar %}
-            <img src="{{ user.userprofile.avatar.url }}" alt="{{ user.username }}" class="avatar">
+            <img src="{{ user.userprofile.avatar.url }}" alt="{{ user.username }}" class="avatar-preview">
         {% endif %}
+        <h1>{{ user.username }}</h1>
     </div>
     <div class="profile-details">
-        <h1>{{ user.username }}</h1>
-        <p><strong>Email:</strong> {{ user.userprofile.email }}</p>
-        <p><strong>Bio:</strong> {{ user.userprofile.bio }}</p>
-        <p><strong>Birth date:</strong> {{ user.userprofile.birth_date }}</p>
+        <p class='user_info'><strong>Email:</strong> {{ user.email }}</p>
+        <p class='user_info'><strong>Bio:</strong> {{ user.userprofile.bio }}</p>
+        <p class='user_info'><strong>Birth date:</strong> {{ user.userprofile.birth_date }}</p>
     </div>
+    <a href ="{% url 'update_profile' user.username%}">
+        <button class="update-btn">Update Profile</button>
+    </a>
+    
 </div>
 {% endblock %}

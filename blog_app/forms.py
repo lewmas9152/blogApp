@@ -3,7 +3,7 @@ from typing import Any
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from .models import Post
+from .models import Post, UserProfile
 
 class CustomUserCreationForm(UserCreationForm):
     first_name = forms.CharField(max_length=30, required=True)
@@ -23,3 +23,14 @@ class PostForm(forms.ModelForm):
     class Meta:
         model =Post
         fields =['title','content']
+
+class UserProfileForm(forms.ModelForm):
+    birth_date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
+    class Meta:
+        model = UserProfile
+        fields =["avatar","bio","birth_date"]
+
+class UserForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ["username", "first_name", "last_name","email"]

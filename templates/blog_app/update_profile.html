@@ -1,0 +1,47 @@
+<!-- blog_app/templates/blog_app/update_profile.html -->
+
+{% extends 'blog_app/base.html' %} {% load static %} {% block extrastyles %}
+<link rel="stylesheet" href="{% static 'blogApp/profile.css' %}" />
+{% endblock %} {% block content %}
+<div class="card">
+  <h2>Update Profile</h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="form-group avatar-input">
+        <div class="avatar-preview">
+          <img src="{{ user.userprofile.avatar.url }}" alt="Avatar" />
+        </div>
+        <input type="file" name="avatar" id="id_avatar" />
+        <label for="id_avatar" class="choose-file-btn">Choose File</label>
+      </div>
+      
+    <div class="form-group">
+      <label for="id_username">Username:</label>
+      {{ user_form.username }}
+    </div>
+    <div class="form-group">
+      <label for="id_email">Email:</label>
+      {{ user_form.email }}
+    </div>
+    <div class="form-group">
+      <label for="id_first_name">First Name:</label>
+      {{ user_form.first_name }}
+    </div>
+    <div class="form-group">
+      <label for="id_last_name">Last Name:</label>
+      {{ user_form.last_name }}
+    </div>
+    <div class="form-group">
+      <label for="id_bio">Bio:</label>
+      {{ profile_form.bio }}
+    </div>
+    <div class="form-group">
+      <label for="id_birth_date">Birth Date:</label>
+      {{ profile_form.birth_date }}
+    </div>
+
+    <button type="submit" class="update-btn">Save Changes</button>
+  </form>
+</div>
+{% endblock %}

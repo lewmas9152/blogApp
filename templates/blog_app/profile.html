@@ -16,9 +16,14 @@
         <p class='user_info'><strong>Bio:</strong> {{ user.userprofile.bio }}</p>
         <p class='user_info'><strong>Birth date:</strong> {{ user.userprofile.birth_date }}</p>
     </div>
-    <a href ="{% url 'update_profile' user.username%}">
-        <button class="update-btn">Update Profile</button>
-    </a>
+    <div class="profile-actions">
+        <a href="{% url 'update_profile' user.username %}">
+            <button class="update-btn">Update Profile</button>
+        </a>
+        <a href="{% url 'logout' %}">
+            <button class="logout-btn">Logout</button>
+        </a>
+    </div>
     
 </div>
 {% endblock %}

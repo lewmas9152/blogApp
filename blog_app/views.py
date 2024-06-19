@@ -60,11 +60,12 @@ def update_profile(request,username):
     })
 @login_required
 def home(request):
-    posts = Post.objects.all()
+    posts = Post.objects.select_related('author__userprofile').all().order_by('-date_posted')
     context = {
         "posts": posts
     }
-    return render(request,'blog_app/home.html',context)
+    return render(request, 'blog_app/home.html', context)
+
 
 @login_required
 def post_detail(request,id):
@@ -77,7 +78,7 @@ def post_detail(request,id):
 @login_required
 def post_create(request):
     if request.method == "POST":
-        form = PostForm(request.POST)
+        form = PostForm(request.POST,request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
@@ -92,7 +93,7 @@ def post_edit(request, id):
     if post.author != request.user:
         return HttpResponseForbidden()
     if request.method == "POST":
-        form = PostForm(request.POST, instance=post)
+        form = PostForm(request.POST,request.FILES, instance=post)
         if form.is_valid():
             form.save()
             return redirect('post_detail', id=post.id)
@@ -109,3 +110,8 @@ def post_delete(request, id):
         post.delete()
         return redirect('home')
     return render(request, 'blog_app/post_confirm_delete.html', {'post': post})
+
+@login_required
+def logout_view(request):
+    logout(request)
+    return redirect('login') 

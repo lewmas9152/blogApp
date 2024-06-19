@@ -3,32 +3,37 @@
 {% block title %}
   Home
 {% endblock %}
-{% block extrastyles%}
+{% block extrastyles %}
 <link rel="stylesheet" href="{% static 'blogApp/forms.css' %}">
-{% endblock%}
+{% endblock %}
 {% block content %}
 <section class="blog-posts">
- 
+
   {% if posts %}
     {% for post in posts %}
     <article class="post">
+      <p class="post-meta">
+        {% if post.author.userprofile.avatar %}
+          <img src="{{ post.author.userprofile.avatar.url }}" alt="{{ post.author.username }}" class="author-profile-image">
+        {% endif %}
+        {{ post.author }} {{ post.date_posted }}
+      </p>
       <h2>{{ post.title|title }}</h2>
-      <p class="post-meta">{{ post.date_posted }} by <a href="#">{{ post.author }}</a></p>
-      <p class ="content_home">{{ post.content }}</p>
-     
+      {% if post.image %}
+        <img src="{{ post.image.url }}" alt="{{ post.title }}" class="post-image">
+      {% endif %}
+      <p class="content_home">{{ post.content }}</p>
 
-
-      
       <div class="post-actions">
-        <a href="{% url 'post_detail' post.id %}" class=" btn btn-primary read-more">Read More</a>
+        <a href="{% url 'post_detail' post.id %}" class="btn btn-primary read-more">Read More</a>
         {% if request.user == post.author %}
         <div>
-        <a href="{% url 'post_edit' post.id %}" class="btn btn-secondary">Edit</a>
-        <a href="{% url 'post_delete' post.id %}" class="btn btn-danger">Delete</a>
+          <a href="{% url 'post_edit' post.id %}" class="btn btn-secondary">Edit</a>
+          <a href="{% url 'post_delete' post.id %}" class="btn btn-danger">Delete</a>
         </div>
         {% endif %}
       </div>
-     
+
     </article>
     {% endfor %}
   {% else %}

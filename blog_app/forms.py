@@ -22,7 +22,7 @@ class CustomUserCreationForm(UserCreationForm):
 class PostForm(forms.ModelForm):
     class Meta:
         model =Post
-        fields =['title','content']
+        fields =['title','content','image']
 
 class UserProfileForm(forms.ModelForm):
     birth_date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))

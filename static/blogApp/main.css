@@ -88,6 +88,7 @@ main {
   margin-right: 20px;
 }
 
+
 .post-actions {
   display: flex;
   align-items: center;
@@ -116,9 +117,16 @@ main {
 }
 
 .post-image {
-  max-width: 100%;
-  height: auto;
+  max-width: 40%;
+  height: 40%;
+  border-radius: 1rem;
   margin: 20px 0;
+}
+
+.post-image2 {
+  width: 100%;
+  height: 60%;
+  border-radius: 1rem;
 }
 
 .sidebar {
@@ -165,6 +173,15 @@ main {
   background-color: rgb(18, 18, 170);
 }
 
+.author-profile-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+
 footer {
   flex-shrink: 0;
   margin-top: auto;
@@ -178,4 +195,5 @@ footer {
 footer p {
   margin: 0;
 }
+
 

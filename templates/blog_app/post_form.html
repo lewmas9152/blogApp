@@ -9,11 +9,11 @@
 </style>
 {% endblock %}
 {% block content %}
-<div class="form-container" >
+<div class="form-container">
   <div class="form-header">
     <h2>{% if form.instance.pk %}Edit{% else %}Create{% endif %} Post</h2>
   </div>
-  <form method="post">
+  <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="form-field">
       {{ form.title.label_tag }}
@@ -22,6 +22,10 @@
     <div class="form-field">
       {{ form.content.label_tag }}
       {{ form.content }}
+    </div>
+    <div class="form-field">
+      {{ form.image.label_tag }}
+      {{ form.image }}
     </div>
     <div class="form-actions">
       <button type="submit" class="btn btn-primary">Save</button>

@@ -1,9 +1,15 @@
 {% extends 'blog_app/base.html' %}
+
 {% block content %}
   <article class="post-detail">
+    <p class="post-meta">
+      {% if post.author.userprofile.avatar %}
+        <img src="{{ post.author.userprofile.avatar.url }}" alt="{{ post.author.username }}" class="author-profile-image">
+      {% endif %}
+      {{ post.author }} {{ post.date_posted }}
+    </p>
     <h2>{{ post.title }}</h2>
-    <p class="post-meta">Posted on {{ post.date_posted }} by <a href="#">{{ post.author }}</a></p>
-    <img src="{{ post.image.url }}" alt="Post Image" class="post-image" />
+    <img src="{{ post.image.url }}" alt="Post Image" class="post-image2" />
     <p>{{ post.content }}</p>
   </article>
 {% endblock %}

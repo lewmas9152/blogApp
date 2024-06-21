@@ -1,4 +1,6 @@
 from pathlib import Path
+import dj_database_url
+
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -12,9 +14,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-6qm-0tyj(_ssot#k&=yk1-*kg(uon518zk8vjma=uj+mjzvmhe'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -31,6 +33,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -75,15 +78,19 @@ DATABASES = {
 }
 '''
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'blogster',  # Replace with your PostgreSQL database name
+#         'USER': 'njugush',  # Replace with your PostgreSQL user
+#         'PASSWORD': 'password123#@!',  # Replace with your PostgreSQL password
+#         'HOST': 'localhost',  # Set to 'localhost' if running locally
+#         'PORT': '5432',  # Default PostgreSQL port
+#     }
+# }
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'blogster',  # Replace with your PostgreSQL database name
-        'USER': 'njugush',  # Replace with your PostgreSQL user
-        'PASSWORD': 'password123#@!',  # Replace with your PostgreSQL password
-        'HOST': 'localhost',  # Set to 'localhost' if running locally
-        'PORT': '5432',  # Default PostgreSQL port
-    }
+    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
 }
 
 
@@ -130,6 +137,7 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 

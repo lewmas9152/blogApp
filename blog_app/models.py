@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+import base64
 from django.contrib.auth.models import User
 
 class Post(models.Model):
@@ -11,6 +12,12 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+    
+    def image_base64(self):
+        if self.image:
+            with self.image.open('rb') as image_file:
+                return base64.b64encode(image_file.read()).decode('utf-8')
+        return ""
 
 
 class UserProfile(models.Model):
@@ -22,6 +29,10 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return self.user.username
+    
+    def avatar_base64(self):
+        with self.avatar.open('rb') as avatar_file:
+            return base64.b64encode(avatar_file.read()).decode('utf-8')
 
 
 
